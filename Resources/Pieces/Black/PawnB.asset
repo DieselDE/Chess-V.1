@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c702c6a08fec13a4ba8524474f11eda6, type: 3}
+  m_Name: PawnB
+  m_EditorClassIdentifier: 
+  Team: 1
+  Name: 0
+  PiecePrefab: {fileID: 2740857044808394086, guid: 5ee13608465b41c46b964f4da1ec6438, type: 3}

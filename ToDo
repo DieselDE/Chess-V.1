@@ -1,0 +1,9 @@
+Pawn to anything at y = 0 / y = 7   Done?
+    -> after promotion, all pieces dissapear from the _piecesPosition dictionary. wtf!!!
+
+put in the check effect done kinda
+
+put in winning condition
+    -> lets have more fun than with Pawn to anything ^^
+
+change from 2 storage systems to 1
