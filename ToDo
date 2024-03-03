@@ -7,3 +7,8 @@ put in winning condition
     -> lets have more fun than with Pawn to anything ^^
 
 change from 2 storage systems to 1
+
+king cant move 2 when under attack
+check why I can move pieces so that the king is then under attack
+
+put in IsKingUnderAttack in baseWihte and baseBlack, but before collider get destroyed

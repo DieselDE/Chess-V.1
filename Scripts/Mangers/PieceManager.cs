@@ -371,7 +371,6 @@ public class PieceManager : MonoBehaviour
                             Debug.Log($"{tempPiece}");
                             return true;
                         }
-
                     }
                 }
             }
@@ -399,8 +398,20 @@ public class PieceManager : MonoBehaviour
                 }
             }
         }
+
         Debug.LogWarning($"Piece not found that is attacking tile: {tile}");
         return new Vector2(-1, -1);
+    }
+
+    // specific just for IsMoveViable()
+    public bool IsKingUnderAttack(Team team){
+
+        Vector2 kingVector = FindPieceVec(Name.King, team);
+        Tile kingTile = GridManager.Instance.GetTile(kingVector);
+
+        Debug.Log($"Blub {kingVector} {kingTile} {team}");
+
+        return IsTileUnderAttack(kingTile, team);
     }
 
     public BasePiece PawnToQueen<T>(Tile newTile, BasePiece pawn) where T : BasePiece{
@@ -427,7 +438,12 @@ public class PieceManager : MonoBehaviour
 
             if(IsTileUnderAttack(attackTile, oppositeTeam)){
 
-                Vector2 tempAttackVec = IsTileUnderAttackVec(attackTile, oppositeTeam);
+                Vector2 tempAttackVec = IsTileUnderAttackVec(attackTile, oppositeTeam); // check for edge cases
+
+                if(tempAttackVec == new Vector2(-1, -1)){
+                    Debug.Log("No tempAttack found");
+                }
+
                 Tile tempAttackTile = GridManager.Instance.GetTile(tempAttackVec);
                 BasePiece tempAttackPiece = FindPieceBase(tempAttackVec);
 
@@ -464,9 +480,10 @@ public class PieceManager : MonoBehaviour
                     Tile tempKingTile = GridManager.Instance.GetTile(tempKingVec);
                     
                     if(kingBase.IsViableMove(tempKingVec)){
-                        
+                        Debug.Log("Blub1");
                         if(!IsTileUnderAttack(tempKingTile, team)){
                             
+                            Debug.Log("Blub2");
                             return false;
                         }
                     }
@@ -475,11 +492,11 @@ public class PieceManager : MonoBehaviour
             
             // Check other conditions like move in between king and piece if others fail
         }
-
         else{
 
             Debug.LogError($"attack piece not found at {attackVec}");
         }
+        
         Debug.Log("Blub3");
         return true;
     }
