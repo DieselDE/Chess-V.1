@@ -409,6 +409,9 @@ public class PieceManager : MonoBehaviour
         Vector2 kingVector = FindPieceVec(Name.King, team);
         Tile kingTile = GridManager.Instance.GetTile(kingVector);
 
+        // move the piece and then check if king under attack
+        // after put piece back
+        
         Debug.Log($"Blub {kingVector} {kingTile} {team}");
 
         return IsTileUnderAttack(kingTile, team);
