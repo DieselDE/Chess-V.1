@@ -404,17 +404,36 @@ public class PieceManager : MonoBehaviour
     }
 
     // specific just for IsMoveViable()
-    public bool IsKingUnderAttack(Team team){
+    // its like with the PawToQueen and IsWinConditionMet situation
+    public bool IsKingUnderAttack(BasePiece newPiece, Tile oldTile, Team team){
 
         Vector2 kingVector = FindPieceVec(Name.King, team);
         Tile kingTile = GridManager.Instance.GetTile(kingVector);
 
-        // move the piece and then check if king under attack
-        // after put piece back
-        
-        Debug.Log($"Blub {kingVector} {kingTile} {team}");
+        Vector2 oldTilePos = oldTile.transform.position;
+        Vector2 newTilePos = newPiece.transform.position;
+        BasePiece tempPiece = null;
 
-        return IsTileUnderAttack(kingTile, team);
+        _piecePosition.TryGetValue(newTilePos, out tempPiece);
+
+        MovePiece(newTilePos, newPiece);
+
+        if(IsTileUnderAttack(kingTile, team)){
+
+            MovePiece(oldTilePos, newPiece);
+            if(tempPiece != null)
+                AddPiece(newTilePos, tempPiece);
+            
+            return false;
+        }
+        else{
+
+            MovePiece(oldTilePos, newPiece);
+            if(tempPiece != null)
+                AddPiece(newTilePos, tempPiece);
+            
+            return true;
+        }
     }
 
     public BasePiece PawnToQueen<T>(Tile newTile, BasePiece pawn) where T : BasePiece{

@@ -56,13 +56,9 @@ public class BaseWhite : BasePiece
             }
         }
 
-        if(!draggedObject.IsViableMove(newTile.transform.position)){
-
-            if(draggedObject != null){
-
-                PutPieceBackWhite();
-            }
-
+        if(!draggedObject.IsViableMove(newTile.transform.position) || PieceManager.Instance.IsKingUnderAttack(draggedObject, oldTile, Team.White)){
+            
+            PutPieceBackWhite();
             SoundManager.Instance.PlaySound(SoundEffect.illegalSoundEffect);
             GameManager.Instance.UpdateGameState(GameState.WhiteTurn);
 

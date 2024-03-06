@@ -12,3 +12,5 @@ king cant move 2 when under attack
 check why I can move pieces so that the king is then under attack
 
 put in IsKingUnderAttack in baseWihte and baseBlack, but before collider get destroyed
+
+I should rewrite BaseBlack and BaseWhite, just because its a shit fest

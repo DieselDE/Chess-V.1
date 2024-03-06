@@ -51,8 +51,8 @@ public class BaseBlack : BasePiece
             }
         }
 
-        if(!draggedObject.IsViableMove(newTile.transform.position)){
-
+        if(!draggedObject.IsViableMove(newTile.transform.position) || PieceManager.Instance.IsKingUnderAttack(draggedObject, oldTile, Team.Black)){
+            
             PutPieceBackBlack();
             SoundManager.Instance.PlaySound(SoundEffect.illegalSoundEffect);
             GameManager.Instance.UpdateGameState(GameState.BlackTurn);
