@@ -98,9 +98,9 @@ public class BaseBlack : BasePiece
         oldTile.SetPiece(null);
         newTile.SetPiece(draggedObject);
         
-        Vector2 tempVec = PieceManager.Instance.FindPieceVec(Name.King, Team.White);
-        Tile tempTile = GridManager.Instance.GetTile(tempVec);
-        // Debug.Log($"{tempTile} {tempVec}");
+        Vector2 kingVec = PieceManager.Instance.FindPieceVec(Name.King, Team.White);
+        Tile kingTile = GridManager.Instance.GetTile(kingVec);
+        // Debug.Log($"{kingTile} {kingVec}");
 
         if (draggedObject.ScriptablePiece.Name == Name.Pawn && ((int)newTile.transform.position.y == 7 || (int)newTile.transform.position.y == 0)){
 
@@ -110,7 +110,7 @@ public class BaseBlack : BasePiece
         }
 
 
-        if(PieceManager.Instance.IsTileUnderAttack(tempTile, Team.White)){
+        if(PieceManager.Instance.IsTileUnderAttack(kingTile, Team.White)){
 
             SoundManager.Instance.PlaySound(SoundEffect.moveCheckSoundEffect);
 

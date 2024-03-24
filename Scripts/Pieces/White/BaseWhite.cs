@@ -103,12 +103,12 @@ public class BaseWhite : BasePiece
         oldTile.SetPiece(null);
         newTile.SetPiece(draggedObject);
 
-        Vector2 tempVec = PieceManager.Instance.FindPieceVec(Name.King, Team.Black);
-        Tile tempTile = GridManager.Instance.GetTile(tempVec);
+        Vector2 kingVec = PieceManager.Instance.FindPieceVec(Name.King, Team.Black);
+        Tile kingTile = GridManager.Instance.GetTile(kingVec);
         // BasePiece tempPiece = PieceManager.Instance.FindPieceBase(new Vector2(4, 7));
-        // Debug.Log($"{tempTile} {tempVec}{PieceManager.Instance.IsTileUnderAttack(tempTile)} {tempPiece}");
+        // Debug.Log($"{kingTile} {kingVec}{PieceManager.Instance.IsTileUnderAttack(kingTile)} {tempPiece}");
 
-        if(tempTile == null){
+        if(kingTile == null){
             Debug.LogWarning("King's tile not found!");
             return;
         }
@@ -120,7 +120,7 @@ public class BaseWhite : BasePiece
             PieceManager.Instance.PutInAllPiecesInDictionary();
         }
 
-        if(PieceManager.Instance.IsTileUnderAttack(tempTile, Team.Black)){
+        if(PieceManager.Instance.IsTileUnderAttack(kingTile, Team.Black)){
 
             SoundManager.Instance.PlaySound(SoundEffect.moveCheckSoundEffect);
 

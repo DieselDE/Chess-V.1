@@ -403,8 +403,6 @@ public class PieceManager : MonoBehaviour
         return new Vector2(-1, -1);
     }
 
-    // specific just for IsMoveViable()
-    // its like with the PawToQueen and IsWinConditionMet situation
     public bool IsKingUnderAttack(BasePiece newPiece, Tile oldTile, Team team){
 
         Vector2 kingVector = FindPieceVec(Name.King, team);
@@ -424,7 +422,7 @@ public class PieceManager : MonoBehaviour
             if(tempPiece != null)
                 AddPiece(newTilePos, tempPiece);
             
-            return false;
+            return true;
         }
         else{
 
@@ -432,7 +430,7 @@ public class PieceManager : MonoBehaviour
             if(tempPiece != null)
                 AddPiece(newTilePos, tempPiece);
             
-            return true;
+            return false;
         }
     }
 
