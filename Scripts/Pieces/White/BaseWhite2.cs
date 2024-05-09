@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class BaseWhite2 : BasePiece
 {
-    void Start(){
-
-        PieceManager.Instance.PutInAllPiecesInDictionary();
-    }
+    
 }
